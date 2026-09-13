@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arman Harutyunyan — Commercial Photographer</title>
+<meta name="description" content="Commercial, portrait, fashion and sports photographer based in Yerevan. Fifteen years behind the camera. Available worldwide." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="top micro fade">
+    <a class="mark" href="index.html" aria-label="Arman Harutyunyan">AH</a>
+    <nav class="menu">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main class="middle">
+    <h1 class="name fade d1"><span class="w">Arman</span><span class="chip" id="chip">
+        <img src="assets/img/me/01.webp" alt="" />
+        <img src="assets/img/me/02.webp" alt="" />
+        <img src="assets/img/me/03.webp" alt="" />
+        <img src="assets/img/me/04.webp" alt="" />
+        <img src="assets/img/me/05.webp" alt="" />
+      </span><span class="w">Harutyunyan</span></h1>
+  </main>
+
+  <footer class="bottom fade d2">
+    <span class="side left">Yerevan, Armenia</span>
+    <p class="note">
+      <a class="cat" href="portrait.html">Portrait</a> &bull;
+      <a class="cat" href="fashion.html">Fashion</a> &bull;
+      <a class="cat" href="product.html">Product</a>
+    </p>
+    <span class="side right">Available worldwide</span>
+  </footer>
+
+<script>
+/* Անվան նկարների ռոտացիա */
+(function(){
+  const INTERVAL = 2600;
+  const shots = document.querySelectorAll('#chip img');
+  if(!shots.length) return;
+  shots[0].classList.add('on');
+  if(shots.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    shots[i].classList.remove('on');
+    i = (i + 1) % shots.length;
+    shots[i].classList.add('on');
+  }, INTERVAL);
+})();
+
+/* Անունը միշտ տեղավորվում է էկրանին */
+(function(){
+  const el = document.querySelector('.name');
+  if(!el) return;
+  const FILL = 0.9, words = el.querySelectorAll('.w');
+  function fit(){
+    const stacked = window.innerWidth < 640;
+    el.style.fontSize = '100px';
+    const target = el.parentElement.clientWidth * FILL;
+    let measured = el.offsetWidth;
+    if(stacked){ measured = 0; words.forEach(w => { if(w.offsetWidth > measured) measured = w.offsetWidth; }); }
+    el.style.fontSize = (100 * target / measured) + 'px';
+  }
+  fit();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
