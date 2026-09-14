@@ -166,6 +166,29 @@ a.row:hover{ padding-left:10px; }
 }
 .grid button:hover img{ transform:scale(1.04); }
 
+
+/* ---------- ԴԻՄԱՆԿԱՐ About / Contact էջերում ---------- */
+.about-grid{ display:grid; grid-template-columns:1fr; gap:28px; }
+.about-col{ min-width:0; }
+.about-col .title{ margin-bottom:28px; }
+.me{ margin:0; }
+.me img{ width:100%; height:auto; display:block; background:#F2F2F2; }
+.me figcaption{ color:var(--muted); padding-top:10px; }
+
+.me-wide{ margin:32px 0 8px; max-width:520px; }
+.me-wide img{
+  width:100%; aspect-ratio:16/9; object-fit:cover; object-position:50% 25%;
+  display:block; background:#F2F2F2;
+}
+
+@media (min-width:900px){
+  .about-grid{ grid-template-columns:1.25fr .75fr; gap:56px; align-items:start; }
+  .about-grid .prose{ margin-bottom:0; }
+  /* նկարի վերին եզրը՝ «About» բառի գլխատառի բարձրության վրա */
+  .me{ position:sticky; top:40px; margin-top:.16em; }
+  .me img{ aspect-ratio:4/5; object-fit:cover; object-position:50% 20%; }
+}
+
 /* ---------- LIGHTBOX ---------- */
 .lb{
   position:fixed; inset:0; z-index:100; display:none;
