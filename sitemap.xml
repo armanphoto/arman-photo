@@ -5,6 +5,7 @@
   <url><loc>https://armanphoto.com/portrait</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://armanphoto.com/fashion</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://armanphoto.com/product</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://armanphoto.com/reportage</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://armanphoto.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://armanphoto.com/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
