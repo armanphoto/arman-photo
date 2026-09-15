@@ -54,7 +54,11 @@
     <form name="enquiry" method="POST" data-netlify="true"
           netlify-honeypot="bot-field" action="/thanks" class="form fade d2">
       <input type="hidden" name="form-name" value="enquiry" />
-      <p class="hp"><label>Leave this empty: <input name="bot-field" /></label></p>
+      <p class="hp" aria-hidden="true">
+        <label>Leave this empty:
+          <input name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+      </p>
 
       <div class="f-row">
         <label for="f-name">Name</label>
@@ -63,7 +67,7 @@
 
       <div class="f-row">
         <label for="f-contact">Email or phone</label>
-        <input id="f-contact" name="contact" type="text" required />
+        <input id="f-contact" name="contact" type="text" required autocomplete="email" />
       </div>
 
       <div class="f-row">

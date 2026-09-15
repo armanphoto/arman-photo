@@ -230,7 +230,7 @@ a.row:hover{ padding-left:10px; }
 
 /* ---------- ԿԱՊԻ ՁԵՎԱԹՈՒՂԹ ---------- */
 .form{ max-width:520px; margin:8px 0 48px; }
-.hp{ position:absolute; left:-9999px; }      /* սպամի թակարդ */
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }  /* սպամի թակարդ */
 .f-row{ display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
 .f-row label{
   color:var(--muted); text-transform:uppercase;
