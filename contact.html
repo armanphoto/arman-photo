@@ -50,6 +50,43 @@
       studio, location or travel. I reply to every enquiry.</p>
 
     
+
+    <form name="enquiry" method="POST" data-netlify="true"
+          netlify-honeypot="bot-field" action="/thanks" class="form fade d2">
+      <input type="hidden" name="form-name" value="enquiry" />
+      <p class="hp"><label>Leave this empty: <input name="bot-field" /></label></p>
+
+      <div class="f-row">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="f-row">
+        <label for="f-contact">Email or phone</label>
+        <input id="f-contact" name="contact" type="text" required />
+      </div>
+
+      <div class="f-row">
+        <label for="f-type">What kind of shoot?</label>
+        <select id="f-type" name="shoot_type">
+          <option>Portrait</option>
+          <option>Fashion</option>
+          <option>Product / Food</option>
+          <option>Event / Reportage</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="f-row">
+        <label for="f-msg">Tell me about it</label>
+        <textarea id="f-msg" name="message" rows="4"
+          placeholder="Dates, location, what you need — as much or as little as you like."></textarea>
+      </div>
+
+      <button type="submit" class="btn-send">Send enquiry</button>
+      <p class="f-note micro">Or write directly to booking@armanphoto.com</p>
+    </form>
+
     <div class="rows fade d2">
       <a class="row" href="mailto:booking@armanphoto.com">
         <span class="k">Email</span><span class="v">booking@armanphoto.com</span><span class="go">&rarr;</span></a>

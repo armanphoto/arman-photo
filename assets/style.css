@@ -226,6 +226,63 @@ a.row:hover{ padding-left:10px; }
 
 .lb .n{ position:absolute; bottom:18px; left:0; right:0; text-align:center; color:var(--muted); }
 
+
+
+/* ---------- ԿԱՊԻ ՁԵՎԱԹՈՒՂԹ ---------- */
+.form{ max-width:520px; margin:8px 0 48px; }
+.hp{ position:absolute; left:-9999px; }      /* սպամի թակարդ */
+.f-row{ display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
+.f-row label{
+  color:var(--muted); text-transform:uppercase;
+  letter-spacing:.14em; font-size:.66rem; font-weight:500;
+}
+.form input, .form select, .form textarea{
+  font:inherit; color:var(--ink); background:#fff;
+  border:0; border-bottom:1px solid var(--line);
+  padding:10px 0; width:100%; border-radius:0;
+  transition:border-color .2s ease;
+}
+.form textarea{ resize:vertical; line-height:1.5; }
+.form input:focus, .form select:focus, .form textarea:focus{
+  outline:none; border-bottom-color:var(--ink);
+}
+.form select{ appearance:none; cursor:pointer; background:transparent; }
+.btn-send{
+  font:inherit; cursor:pointer; margin-top:10px;
+  background:var(--ink); color:#fff; border:0;
+  padding:14px 30px; border-radius:999px;
+  text-transform:uppercase; letter-spacing:.14em;
+  font-size:.7rem; font-weight:600;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.btn-send:hover{ opacity:.85; }
+.btn-send:active{ transform:scale(.98); }
+.f-note{ color:var(--muted); margin-top:16px; }
+
+/* ---------- ՀԱՋՈՐԴ ԲԱԺԻՆ ---------- */
+.next-sec{
+  margin-top:56px; border-top:1px solid var(--line);
+  display:flex; flex-direction:column; gap:0;
+}
+.next-sec .back{
+  padding:16px 0; color:var(--muted);
+  border-bottom:1px solid var(--line);
+  transition:color .2s ease;
+}
+.next-sec .back:hover{ color:var(--ink); }
+.next-sec .fwd{
+  display:flex; align-items:baseline; gap:14px;
+  padding:26px 0 8px;
+  transition:padding-left .3s cubic-bezier(.22,1,.36,1);
+}
+.next-sec .fwd:hover{ padding-left:10px; }
+.next-sec .fwd .k{ color:var(--muted); }
+.next-sec .fwd .v{
+  font-weight:700; letter-spacing:-.035em;
+  font-size:clamp(1.8rem,7vw,3.4rem); line-height:1;
+}
+.next-sec .fwd .go{ color:var(--muted); margin-left:auto; }
+
 /* ---------- FOOTER ---------- */
 .foot{
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
