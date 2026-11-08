@@ -17,7 +17,7 @@
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html,body{ background:var(--bg); overflow-x:clip; }
 body{
-  font-family:'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif;
+  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
   color:var(--ink); -webkit-font-smoothing:antialiased;
   min-height:100svh; display:flex; flex-direction:column;
 }

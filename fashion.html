@@ -26,9 +26,6 @@
   <meta name="twitter:description" content="Fashion editorial and campaign photography by Arman Harutyunyan, shot in studio and on location in Yerevan, Armenia.">
   <meta name="twitter:image" content="https://armanphoto.com/assets/icons/og-image.jpg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -87,17 +84,33 @@
         c =document.getElementById('lbC');
   let cur=1;
   const pad=n=>String(n).padStart(2,'0');
-  const src=n=>'assets/img/'+CAT+'/'+pad(n)+'.webp';
-
-  // հարևան կադրերը նախապես բեռնել, որ թերթելը ակնթարթային լինի
-  function preload(n){
-    [n-1,n+1].forEach(k=>{
-      if(k>=1 && k<=TOTAL){ const i=new Image(); i.src=src(k); }
-    });
+  const file=(n,suf)=>'assets/img/'+CAT+'/'+pad(n)+suf+'.webp';
+  const thumb=n=>document.querySelector('.grid button[data-n="'+n+'"] img');
+  // ինչ չափ է պետք այս էկրանին. 1100px-ը բավական է հեռախոսներին և սովորական էկրաններին
+  function best(n){
+    const t=thumb(n), ar=(t&&t.naturalWidth)? t.naturalWidth/t.naturalHeight : .8;
+    const boxW=Math.min(innerWidth*.95, innerHeight*.92*ar);
+    const dpr=devicePixelRatio||1, lim = dpr>=2 ? 1300 : 1100;   // սովորական էկրանին՝ առանց մեծացման
+    return file(n, boxW*dpr <= lim ? '-t' : '');
   }
+  const warm={};
+  function preloadOne(k){
+    if(k<1||k>TOTAL) return;
+    const u=best(k); if(warm[u]) return;
+    const i=new Image(); i.src=u; warm[u]=i;
+  }
+  // հարևան կադրերը նախապես բեռնել, որ թերթելը ակնթարթային լինի
+  function preload(n){ preloadOne(n-1); preloadOne(n+1); }
+  let tok=0;
   function show(n){
     cur = ((n-1+TOTAL)%TOTAL)+1;
-    im.src = src(cur);
+    const t=thumb(cur), want=best(cur), my=++tok;
+    // նախ՝ արդեն բեռնված փոքր նկարը (ակնթարթային), հետո՝ սուր տարբերակը
+    if(t && t.complete && t.naturalWidth) im.src=t.currentSrc||t.src;
+    const pre=new Image();
+    pre.onload=()=>{ if(my===tok) im.src=want; };
+    pre.src=want;
+    if(!(t && t.complete && t.naturalWidth)) im.src=want;
     c.textContent = pad(cur)+' / '+pad(TOTAL);
     lb.classList.toggle('first', cur===1);
     lb.classList.toggle('last',  cur===TOTAL);
@@ -106,8 +119,10 @@
   function open(n){ show(n); lb.classList.add('open'); document.body.style.overflow='hidden'; }
   function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
 
-  document.querySelectorAll('.grid button').forEach(b=>
-    b.addEventListener('click',()=>open(+b.dataset.n)));
+  document.querySelectorAll('.grid button').forEach(b=>{
+    b.addEventListener('pointerdown',()=>preloadOne(+b.dataset.n));
+    b.addEventListener('click',()=>open(+b.dataset.n));
+  });
   document.getElementById('lbX').onclick=close;
   document.getElementById('lbP').onclick=e=>{ e.stopPropagation(); show(cur-1); };
   document.getElementById('lbN').onclick=e=>{ e.stopPropagation(); show(cur+1); };
