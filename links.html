@@ -11,16 +11,22 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="canonical" href="https://armanphoto.com/">
+<link rel="canonical" href="https://armanphoto.com/links">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Arman Harutyunyan — Links">
 <meta property="og:url" content="https://armanphoto.com/links">
 <meta property="og:image" content="https://armanphoto.com/assets/icons/og-image.jpg">
+<link rel="preload" href="/assets/fonts/inter-latin-opsz.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--ink:#0A0A0A;--muted:#8A8A8A;--line:#E4E4E4}
+@font-face{
+  font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url('/assets/fonts/inter-latin-opsz.woff2') format('woff2-variations'), url('/assets/fonts/inter-latin-opsz.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+:root{--ink:#0A0A0A;--muted:#767676;--line:#E4E4E4}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff}
-body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100svh}
+body{font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;font-optical-sizing:auto;color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100svh}
 a{color:inherit;text-decoration:none}
 img{display:block}
 .wrap{max-width:440px;margin:0 auto;padding:44px 20px 40px;display:flex;flex-direction:column;align-items:center}
@@ -35,7 +41,7 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 .pill.solid{background:var(--ink);color:#fff}
 .note{margin-top:14px;font-size:.78rem;color:var(--muted);text-align:center;line-height:1.5}
 .soc{width:100%;margin-top:28px;display:flex;justify-content:center;gap:20px}
-.soc a{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.soc a{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .soc .ic{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;color:var(--ink);display:grid;place-items:center;transition:background .2s,color .2s,transform .16s ease-out}
 .soc svg{fill:currentColor;display:block}
 .soc .tg{width:30px;height:30px;margin-left:-3px}
@@ -46,7 +52,8 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 .soc a:active .ic{transform:scale(.97)}
 .h{width:100%;margin:34px 0 12px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
 .cats{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cat{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#efefef}
+.cat{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#efefef;transition:transform .16s ease-out;-webkit-tap-highlight-color:transparent}
+.cat:active{transform:scale(.98)}
 .cat img{width:100%;height:100%;object-fit:cover;transition:transform .3s cubic-bezier(.23,1,.32,1)}
 .cat span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 12px;color:#fff;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;background:linear-gradient(transparent,rgba(0,0,0,.55))}
 .foot{margin-top:40px;text-align:center;line-height:2.2;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -59,7 +66,7 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 @keyframes vtOut{to{opacity:0}}
 @keyframes vtIn{from{opacity:0}}
 @media (hover:hover) and (pointer:fine){.pill:hover,.soc a:hover .ic{background:var(--ink);color:#fff}.pill.solid:hover{background:#fff;color:var(--ink)}.cat:hover img{transform:scale(1.03)}}
-@media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}.cat img,.cat:hover img{transition:none;transform:none}.pill,.soc .ic{transition:background .2s,color .2s}.pill:active,.soc a:active .ic{transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}.cat img,.cat:hover img{transition:none;transform:none}.pill,.soc .ic{transition:background .2s,color .2s}.pill:active,.soc a:active .ic,.cat:active{transform:none}}
 </style>
 </head>
 <body>
