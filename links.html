@@ -53,6 +53,11 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 .fade{opacity:0;transform:translateY(14px);animation:in .45s cubic-bezier(.23,1,.32,1) forwards}
 .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}
 @keyframes in{to{opacity:1;transform:none}}
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtOut .15s ease-out both}
+::view-transition-new(root){animation:vtIn .2s ease-out both}
+@keyframes vtOut{to{opacity:0}}
+@keyframes vtIn{from{opacity:0}}
 @media (hover:hover) and (pointer:fine){.pill:hover,.soc a:hover .ic{background:var(--ink);color:#fff}.pill.solid:hover{background:#fff;color:var(--ink)}.cat:hover img{transform:scale(1.03)}}
 @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}.cat img,.cat:hover img{transition:none;transform:none}.pill,.soc .ic{transition:background .2s,color .2s}.pill:active,.soc a:active .ic{transform:none}}
 </style>
@@ -78,10 +83,10 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 
   <p class="h fade d3">Portfolio</p>
   <div class="cats fade d3">
-    <a class="cat" href="portrait.html"><img src="assets/img/portrait/01-s.webp" alt="Portrait photography" loading="lazy" /><span>Portrait</span></a>
-    <a class="cat" href="fashion.html"><img src="assets/img/fashion/01-s.webp" alt="Fashion photography" loading="lazy" /><span>Fashion</span></a>
-    <a class="cat" href="product.html"><img src="assets/img/product/01-s.webp" alt="Product photography" loading="lazy" /><span>Product</span></a>
-    <a class="cat" href="reportage.html"><img src="assets/img/reportage/01-s.webp" style="object-position:16% 45%" alt="Event and sport reportage" loading="lazy" /><span>Reportage</span></a>
+    <a class="cat" href="portrait.html"><img src="assets/img/portrait/01-s.webp" alt="Portrait photography" /><span>Portrait</span></a>
+    <a class="cat" href="fashion.html"><img src="assets/img/fashion/01-s.webp" alt="Fashion photography" /><span>Fashion</span></a>
+    <a class="cat" href="product.html"><img src="assets/img/product/01-s.webp" alt="Product photography" /><span>Product</span></a>
+    <a class="cat" href="reportage.html"><img src="assets/img/reportage/01-s.webp" style="object-position:16% 45%" alt="Event and sport reportage" /><span>Reportage</span></a>
   </div>
 
   <p class="foot"><a href="index.html">armanphoto.com</a><br>&copy; 2026 Arman Harutyunyan</p>

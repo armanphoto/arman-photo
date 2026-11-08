@@ -322,6 +322,10 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
 @view-transition{ navigation:auto; }
 ::view-transition-old(root){ animation:vtOut .15s ease-out both; }
 ::view-transition-new(root){ animation:vtIn .2s ease-out both; }
+/* Վերևի մենյուն էջից էջ անցնելիս մնում է տեղում */
+.top{ view-transition-name:site-top; }
+::view-transition-old(site-top), ::view-transition-new(site-top){ animation:none; }
+::view-transition-group(site-top){ animation-duration:0s; }
 @keyframes vtOut{ to{ opacity:0; } }
 @keyframes vtIn{ from{ opacity:0; } }
 
