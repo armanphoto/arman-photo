@@ -29,9 +29,10 @@
   // ինչ չափ է պետք այս էկրանին. 1100px-ը բավական է հեռախոսներին և սովորական էկրաններին
   function best(n){
     const t=thumb(n), ar=(t&&t.naturalWidth)? t.naturalWidth/t.naturalHeight : .8;
-    const boxW=Math.min(innerWidth*.95, innerHeight*.92*ar);
-    const dpr=devicePixelRatio||1, lim = dpr>=2 ? 1300 : 1100;   // սովորական էկրանին՝ առանց մեծացման
-    return file(n, boxW*dpr <= lim ? '-t' : '');
+    const boxW=Math.min(innerWidth*.95, innerHeight*.92*ar);          // CSS px
+    const need=boxW*(devicePixelRatio||1);                             // իրական պիքսելներ էկրանին
+    const tW = ar>=1 ? 1100 : 1100*ar;                                 // -t ֆայլի իրական լայնությունը (ուղղահայացը՝ 880)
+    return file(n, need <= tW*1.05 ? '-t' : '');                       // երբեք չձգել. հակառակ դեպքում՝ ամբողջ չափը
   }
   const warm={};
   function preloadOne(k){
