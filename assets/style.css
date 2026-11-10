@@ -363,6 +363,10 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
   .grid{ grid-template-columns:repeat(3,1fr); gap:10px; }
   .bands{ gap:10px; }
 }
+/* շատ նեղ հեռախոսներ (320px). մենյուն չի դուրս գալիս էկրանից */
+@media (max-width:359px){
+  .menu{ gap:16px; font-size:.82rem; }
+}
 @media (min-width:640px){
   :root{ --gut:32px; }
   .name{ display:inline-block; width:auto; white-space:nowrap; }
