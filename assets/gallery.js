@@ -21,18 +21,23 @@
   const im=document.getElementById('lbI'), c=document.getElementById('lbC'), btnX=document.getElementById('lbX');
   const outside=[...document.body.children].filter(el=>el!==lb && el.tagName!=='SCRIPT');
   let cur=1, tok=0, opener=null, pushed=false;
+  tiles.forEach(b=>b.setAttribute('aria-haspopup','dialog'));
+  const live=document.createElement('p');                     // screen reader-ը կարդում է նոր նկարը
+  live.className='sr'; live.setAttribute('aria-live','polite'); lb.appendChild(live);
 
   const pad=n=>String(n).padStart(2,'0');
   const file=(n,suf)=>'assets/img/'+CAT+'/'+pad(n)+suf+'.webp';
   const thumb=n=>tiles[n-1] ? tiles[n-1].querySelector('img') : null;
 
-  // ինչ չափ է պետք այս էկրանին. 1100px-ը բավական է հեռախոսներին և սովորական էկրաններին
+  // ինչ չափ է պետք այս էկրանին. -t (1100), -m (1600) կամ ամբողջը (2400)՝ ըստ էկրանի իրական պիքսելների
   function best(n){
     const t=thumb(n), ar=(t&&t.naturalWidth)? t.naturalWidth/t.naturalHeight : .8;
     const boxW=Math.min(innerWidth*.95, innerHeight*.92*ar);          // CSS px
     const need=boxW*(devicePixelRatio||1);                             // իրական պիքսելներ էկրանին
-    const tW = ar>=1 ? 1100 : 1100*ar;                                 // -t ֆայլի իրական լայնությունը (ուղղահայացը՝ 880)
-    return file(n, need <= tW*1.05 ? '-t' : '');                       // երբեք չձգել. հակառակ դեպքում՝ ամբողջ չափը
+    const w=long=> ar>=1 ? long : long*ar;                             // ֆայլի իրական լայնությունը (երկար կողմից)
+    if(need <= w(1100)*1.05) return file(n,'-t');                      // երբեք չձգել
+    if(need <= w(1600)*1.05) return file(n,'-m');
+    return file(n,'');
   }
   const warm={};
   function preloadOne(k){
@@ -57,6 +62,7 @@
     lb.classList.toggle('first', cur===1);
     lb.classList.toggle('last',  cur===TOTAL);
     preload(cur);
+    if(lb.classList.contains('open')) live.textContent=im.alt+'. '+cur+' of '+TOTAL;
   }
 
   // էջը չի «ցատկում», երբ scrollbar-ը անհետանում է
@@ -86,13 +92,15 @@
     lb.classList.remove('open');
     lockScroll(false);
     outside.forEach(el=>{ el.inert=false; });
-    if(pushed && !fromHistory){ pushed=false; ignorePop=true; history.back(); } else { pushed=false; }
     const back=tiles[cur-1] || opener;          // վերադարձնել ֆոկուսը այն նկարին, որին հասել ենք
     if(back) back.focus({preventScroll:true});
+    // էջը պտտել մինչև այդ նկարը՝ history.back()-ից հետո (այն վերականգնում է նախկին դիրքը)
+    const reveal=()=>{ if(back) back.scrollIntoView({block:'nearest'}); };
+    if(pushed && !fromHistory){ pushed=false; ignorePop=true; afterPop=reveal; history.back(); } else { pushed=false; reveal(); }
   }
-  let ignorePop=false;
+  let ignorePop=false, afterPop=null;
   addEventListener('popstate', ()=>{
-    if(ignorePop){ ignorePop=false; return; }   // մեր իսկ history.back()-ը
+    if(ignorePop){ ignorePop=false; const f=afterPop; afterPop=null; if(f) requestAnimationFrame(f); return; }   // մեր իսկ history.back()-ը
     close(true);
   });
 

@@ -5,7 +5,7 @@
 /* Մեկ տառատեսակ բոլոր սարքերում (Inter, OFL լիցենզիա — assets/fonts/OFL.txt) */
 @font-face{
   font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap;
-  src:url('/assets/fonts/inter-latin-opsz.woff2') format('woff2-variations'), url('/assets/fonts/inter-latin-opsz.woff2') format('woff2');
+  src:url('/assets/fonts/inter-latin-opsz.woff2') format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
@@ -51,7 +51,11 @@ img{ display:block; }
 .menu a[aria-current="page"]{ color:var(--muted); }
 
 /* ---------- ԳԼԽԱՎՈՐ ԷՋԻ ԱՆՈՒՆԸ ---------- */
-.middle{ flex:1; display:flex; align-items:center; justify-content:center; padding:0 var(--gut); }
+.middle{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 var(--gut); }
+.tagline{ margin-top:clamp(18px,3vw,30px); text-align:center; color:var(--muted); font-size:.95rem; line-height:1.7; text-wrap:balance; }
+.tagline .cat{ color:var(--ink); }
+.cta-row{ margin-top:48px; }
+.intro a{ text-decoration:underline; text-underline-offset:3px; }
 .name .w{ white-space:nowrap; display:inline-block; }
 .name{
   display:block; width:100%; text-align:center;
@@ -109,6 +113,18 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
 .row .k{ color:var(--muted); font-size:.82rem; }
 .row .v{ font-weight:500; letter-spacing:-.02em; font-size:clamp(1.1rem,3.4vw,1.7rem); }
 .row .go{ color:var(--muted); }
+.form .req{ text-transform:none; letter-spacing:0; }
+/* 7. հստակ ֆոկուս ստեղնաշարով աշխատողների համար */
+:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+.grid button:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; position:relative; z-index:1; }
+.form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible{ outline:none; }
+/* screen reader-ի համար տեսանելի չտեքստ */
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+/* 14. ավելի մեծ սեղմման տարածք՝ առանց տեսքը փոխելու */
+.menu a, .mark{ position:relative; }
+.menu a::before{ content:''; position:absolute; inset:-13px -10px; }
+.mark::before{ content:''; position:absolute; inset:-4px; border-radius:50%; }
+.bottom .cat::before{ content:''; position:absolute; inset:-14px -6px; }
 
 /* ---------- ՏԵՔՍՏ (about) ---------- */
 .prose{ max-width:56ch; margin-bottom:56px; }
@@ -238,9 +254,8 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
 .lb .prev{ left:16px; }
 .lb .next{ right:16px; }
 .lb .prev:active, .lb .next:active{ transform:translateY(-50%) scale(.96); }
-.lb.first .prev, .lb.last .next{ opacity:.25; }
 
-.lb .n{ position:absolute; bottom:18px; left:0; right:0; text-align:center; color:var(--muted); font-variant-numeric:tabular-nums; }
+.lb .n{ position:absolute; bottom:18px; left:0; right:0; text-align:center; color:var(--muted); font-variant-numeric:tabular-nums; pointer-events:none; }   /* հաշվիչը չի «ծածկում» սլաքների կոճակները հեռախոսում */
 
 
 
@@ -254,13 +269,13 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
 }
 .form input, .form select, .form textarea{
   font:inherit; color:var(--ink); background:#fff;
-  border:0; border-bottom:1px solid #BDBDBD;
+  border:0; border-bottom:1px solid #8A8A8A;      /* 3.4:1 — դաշտի սահմանը տեսանելի է */
   padding:10px 0; width:100%; border-radius:0;
   transition:border-color .2s ease;
 }
 .form textarea{ resize:vertical; line-height:1.5; }
 .form input:focus, .form select:focus, .form textarea:focus{
-  outline:none; border-bottom-color:var(--ink);
+  outline:none; border-bottom-color:var(--ink); box-shadow:0 1px 0 var(--ink);   /* 2px սև գիծ ֆոկուսի ժամանակ */
 }
 .form select{
   appearance:none; cursor:pointer; padding-right:28px;
@@ -298,6 +313,27 @@ a.row .k, a.row .v{ transition:transform .2s var(--ease); }
   font-size:clamp(1.8rem,7vw,3.4rem); line-height:1;
 }
 .next-sec .fwd .go{ color:var(--muted); margin-left:auto; }
+
+/* ---------- ԲԱԺՆԻ ՄԱՍԻՆ ՏԵՔՍՏ (պատկերասրահից հետո) ---------- */
+.more{ margin-top:64px; }
+.more .prose{ margin-bottom:0; }
+
+/* ---------- ԱՇԽԱՏԱՆՔԻ ԸՆԹԱՑՔԸ (բաժինների էջեր) ---------- */
+.how{ margin-top:64px; }
+.sec-h{ color:var(--muted); margin-bottom:16px; }
+.steps{ list-style:none; border-top:1px solid var(--line); }
+.steps li{
+  display:grid; grid-template-columns:40px 1fr; gap:4px 12px;
+  padding:18px 0; border-bottom:1px solid var(--line);
+}
+.steps .num{ grid-row:span 2; color:var(--muted); font-size:.82rem; font-variant-numeric:tabular-nums; padding-top:.25em; }
+.steps strong{ font-weight:600; letter-spacing:-.01em; font-size:1.05rem; }
+.steps p{ color:#333; line-height:1.5; font-size:.95rem; max-width:42ch; text-wrap:pretty; }
+@media (min-width:900px){
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:0 32px; border-top:0; }
+  .steps li{ grid-template-columns:1fr; border-bottom:0; border-top:1px solid var(--line); padding:20px 0 0; }
+  .steps .num{ grid-row:auto; margin-bottom:8px; padding-top:0; }
+}
 
 /* ---------- FOOTER ---------- */
 .foot{

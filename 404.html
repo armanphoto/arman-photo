@@ -14,8 +14,8 @@
 <body>
 
   <header class="top micro">
-    <a class="mark" href="/" aria-label="Arman Harutyunyan">AH</a>
-    <nav class="menu">
+    <a class="mark" href="/" aria-label="Arman Harutyunyan, home">AH</a>
+    <nav class="menu" aria-label="Main">
       <a href="/portfolio">Portfolio</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
@@ -23,14 +23,14 @@
   </header>
 
   <main class="sheet" style="display:flex;flex-direction:column;justify-content:center">
-    <h1 class="title fade">404</h1>
+    <h1 class="title fade">Page not found</h1>
     <p class="intro fade d1" style="margin-top:28px">
       This page doesn&rsquo;t exist &mdash; it may have moved, or the link is incomplete.
     </p>
     <div class="rows fade d2" style="max-width:640px">
-      <a class="row" href="/portfolio"><span class="k">Work</span><span class="v">See the portfolio</span><span class="go">&rarr;</span></a>
-      <a class="row" href="/about"><span class="k">About</span><span class="v">Who I am and how I work</span><span class="go">&rarr;</span></a>
-      <a class="row" href="/contact"><span class="k">Contact</span><span class="v">Get in touch</span><span class="go">&rarr;</span></a>
+      <a class="row" href="/contact"><span class="k">Book</span><span class="v">Book a shoot</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
+      <a class="row" href="/portfolio"><span class="k">Work</span><span class="v">See the portfolio</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
+      <a class="row" href="/about"><span class="k">About</span><span class="v">Who I am and how I work</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
     </div>
   </main>
 
@@ -39,6 +39,10 @@
     <span>&copy; 2026 All rights reserved</span>
   </footer>
 
+  <script type="speculationrules">
+  {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}],
+   "prerender":[{"where":{"href_matches":"/*"},"eagerness":"conservative"}]}
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token": "9f4ea969e29049e4aa8a2d39586d01d0"}'></script>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arman Harutyunyan — Links</title>
-<meta name="description" content="Book a shoot, see the portfolio and save the contact of Arman Harutyunyan, photographer in Yerevan." />
+<meta name="description" content="Call to book a shoot, see the portfolio and follow Arman Harutyunyan, commercial photographer in Yerevan." />
 <meta name="robots" content="noindex, follow" />
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
@@ -39,6 +39,8 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 .pill:focus-visible{background:var(--ink);color:#fff}
 .pill:active{transform:scale(.97)}
 .pill.solid{background:var(--ink);color:#fff}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo .pill{padding:0 10px}
 .note{margin-top:14px;font-size:.78rem;color:var(--muted);text-align:center;line-height:1.5}
 .soc{width:100%;margin-top:28px;display:flex;justify-content:center;gap:20px}
 .soc a{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -77,6 +79,7 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 
   <div class="stack fade d2">
     <a class="pill solid" href="tel:+37433555300">Call</a>
+    <div class="duo"><a class="pill" href="/contact">Send an enquiry</a><a class="pill" href="mailto:booking@armanphoto.com">Email</a></div>
   </div>
   <p class="note fade d2">Pre-edited selection within 24 hours of your shoot.</p>
 
@@ -90,10 +93,10 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 
   <p class="h fade d3">Portfolio</p>
   <div class="cats fade d3">
-    <a class="cat" href="/portrait"><img src="assets/img/portrait/01-s.webp" srcset="assets/img/portrait/01-s.webp 512w, assets/img/portrait/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="Portrait photography" /><span>Portrait</span></a>
-    <a class="cat" href="/fashion"><img src="assets/img/fashion/01-s.webp" srcset="assets/img/fashion/01-s.webp 512w, assets/img/fashion/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="Fashion photography" /><span>Fashion</span></a>
-    <a class="cat" href="/product"><img src="assets/img/product/01-s.webp" srcset="assets/img/product/01-s.webp 512w, assets/img/product/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="Product photography" /><span>Product</span></a>
-    <a class="cat" href="/reportage"><img src="assets/img/reportage/01-s.webp" srcset="assets/img/reportage/01-s.webp 640w, assets/img/reportage/01-t.webp 1100w" sizes="(max-width:440px) 46vw, 200px" style="object-position:16% 45%" alt="Event and sport reportage" /><span>Reportage</span></a>
+    <a class="cat" href="/product"><img src="assets/img/product/01-s.webp" srcset="assets/img/product/01-s.webp 512w, assets/img/product/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="" /><span>Product &amp; Food</span></a>
+    <a class="cat" href="/fashion"><img src="assets/img/fashion/01-s.webp" srcset="assets/img/fashion/01-s.webp 512w, assets/img/fashion/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="" /><span>Fashion</span></a>
+    <a class="cat" href="/portrait"><img src="assets/img/portrait/01-s.webp" srcset="assets/img/portrait/01-s.webp 512w, assets/img/portrait/01-t.webp 880w" sizes="(max-width:440px) 46vw, 200px" alt="" /><span>Portrait</span></a>
+    <a class="cat" href="/reportage"><img src="assets/img/reportage/01-s.webp" srcset="assets/img/reportage/01-s.webp 640w, assets/img/reportage/01-t.webp 1100w" sizes="(max-width:440px) 46vw, 200px" style="object-position:16% 45%" alt="" /><span>Events</span></a>
   </div>
 
   <p class="foot"><a href="/">armanphoto.com</a><br>&copy; 2026 Arman Harutyunyan</p>
@@ -101,5 +104,9 @@ h1{margin-top:18px;font-size:1.5rem;font-weight:700;letter-spacing:-.03em;text-a
 <!-- Cloudflare Web Analytics -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
   data-cf-beacon='{"token": "9f4ea969e29049e4aa8a2d39586d01d0"}'></script>
+  <script type="speculationrules">
+  {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}],
+   "prerender":[{"where":{"href_matches":"/*"},"eagerness":"conservative"}]}
+  </script>
 </body>
 </html>

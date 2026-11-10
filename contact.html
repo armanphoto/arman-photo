@@ -70,8 +70,8 @@
 </head>
 <body>
   <header class="top micro">
-    <a class="mark" href="/" aria-label="Arman Harutyunyan">AH</a>
-    <nav class="menu">
+    <a class="mark" href="/" aria-label="Arman Harutyunyan, home">AH</a>
+    <nav class="menu" aria-label="Main">
       <a href="/portfolio">Portfolio</a>
       <a href="/about">About</a>
       <a href="/contact" aria-current="page">Contact</a>
@@ -83,8 +83,8 @@
       <img src="assets/img/me/about-b.webp" width="1200" height="1500" alt="Arman Harutyunyan" loading="lazy" />
     </figure>
 
-    <p class="intro fade d1" style="margin-top:36px">For commissions, rates and availability &mdash;
-      studio, location or travel. I reply to every enquiry.</p>
+    <p class="intro fade d1" style="margin-top:36px">Tell me what you need and when. I reply within a day
+      with availability and a quote. Based in Yerevan, shooting across Armenia and abroad.</p>
 
     
 
@@ -98,31 +98,36 @@
       </p>
 
       <div class="f-row">
-        <label for="f-name">Name</label>
+        <label for="f-name">Name <span class="req">(required)</span></label>
         <input id="f-name" name="name" type="text" required autocomplete="name" />
       </div>
 
       <div class="f-row">
-        <label for="f-contact">Email or phone</label>
+        <label for="f-contact">Email or phone <span class="req">(required)</span></label>
         <input id="f-contact" name="contact" type="text" required />
+      </div>
+      <div class="f-row">
+        <label for="f-company">Company or venue <span class="req">(optional)</span></label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" />
       </div>
 
       <div class="f-row">
-        <label for="f-type">What kind of shoot?</label>
+        <label for="f-type">What do you need?</label>
         <select id="f-type" name="shoot_type">
           <option value="">Choose one</option>
-          <option>Portrait</option>
+          <option>Food &amp; drink</option>
+          <option>Product</option>
           <option>Fashion</option>
-          <option>Product / Food</option>
-          <option>Event / Reportage</option>
+          <option>Portrait</option>
+          <option>Event</option>
           <option>Other</option>
         </select>
       </div>
 
       <div class="f-row">
-        <label for="f-msg">Tell me about it</label>
+        <label for="f-msg">Details</label>
         <textarea id="f-msg" name="message" rows="4"
-          placeholder="Dates, location, what you need — as much or as little as you like."></textarea>
+          placeholder="Dates, location, how many dishes or products, and where the photos will be used."></textarea>
       </div>
 
       <button type="submit" class="btn-send">Send enquiry</button>
@@ -130,23 +135,31 @@
 
     <div class="rows fade d2">
       <a class="row" href="mailto:booking@armanphoto.com">
-        <span class="k">Email</span><span class="v">booking@armanphoto.com</span><span class="go">&rarr;</span></a>
+        <span class="k">Email</span><span class="v">booking@armanphoto.com</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
       <a class="row" href="tel:+37433555300">
-        <span class="k">Phone</span><span class="v">+374 33 555 300</span><span class="go">&rarr;</span></a>
+        <span class="k">Phone</span><span class="v">+374 33 555 300</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
+      <a class="row" href="https://wa.me/37433555300" target="_blank" rel="noopener">
+        <span class="k">WhatsApp</span><span class="v">+374 33 555 300</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
+      <a class="row" href="https://t.me/armanharutyunyanphotography" target="_blank" rel="noopener">
+        <span class="k">Telegram</span><span class="v">Channel &mdash; new work</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
       <a class="row" href="https://www.instagram.com/armandoofficial10/" target="_blank" rel="noopener">
-        <span class="k">Instagram</span><span class="v">@armandoofficial10</span><span class="go">&rarr;</span></a>
+        <span class="k">Instagram</span><span class="v">@armandoofficial10</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
       <a class="row" href="https://www.facebook.com/armanharutyunyanphotographer" target="_blank" rel="noopener">
-        <span class="k">Facebook</span><span class="v">Arman Harutyunyan Photographer</span><span class="go">&rarr;</span></a>
+        <span class="k">Facebook</span><span class="v">Arman Harutyunyan Photographer</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
       <a class="row" href="https://www.linkedin.com/in/armanharutyunyanphotography/" target="_blank" rel="noopener">
-        <span class="k">LinkedIn</span><span class="v">Arman Harutyunyan</span><span class="go">&rarr;</span></a>
+        <span class="k">LinkedIn</span><span class="v">Arman Harutyunyan</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
       <a class="row" href="https://500px.com/p/arman_photo" target="_blank" rel="noopener">
-        <span class="k">500px</span><span class="v">arman_photo</span><span class="go">&rarr;</span></a>
+        <span class="k">500px</span><span class="v">arman_photo</span><span class="go"><span aria-hidden="true">&rarr;</span></span></a>
     </div>
   </main>
   <footer class="foot micro">
     <span>Arman Harutyunyan</span>
     <span>&copy; 2026 All rights reserved</span>
   </footer>
+  <script type="speculationrules">
+  {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}],
+   "prerender":[{"where":{"href_matches":"/*"},"eagerness":"conservative"}]}
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token": "9f4ea969e29049e4aa8a2d39586d01d0"}'></script>

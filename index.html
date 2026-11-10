@@ -48,6 +48,7 @@
     "https://www.facebook.com/armanharutyunyanphotographer",
     "https://www.linkedin.com/in/armanharutyunyanphotography/",
     "https://500px.com/p/arman_photo",
+    "https://youpic.com/armando_photo",
     "https://t.me/armanharutyunyanphotography"
    ],
    "knowsAbout": [
@@ -96,6 +97,7 @@
     "https://www.facebook.com/armanharutyunyanphotographer",
     "https://www.linkedin.com/in/armanharutyunyanphotography/",
     "https://500px.com/p/arman_photo",
+    "https://youpic.com/armando_photo",
     "https://t.me/armanharutyunyanphotography"
    ],
    "description": "Commercial, product, food, fashion, portrait and event photography in Yerevan, Armenia.",
@@ -149,8 +151,8 @@
 </head>
 <body>
   <header class="top micro">
-    <a class="mark" href="/" aria-label="Arman Harutyunyan">AH</a>
-    <nav class="menu">
+    <a class="mark" href="/" aria-label="Arman Harutyunyan, home">AH</a>
+    <nav class="menu" aria-label="Main">
       <a href="/portfolio">Portfolio</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
@@ -164,15 +166,17 @@
         <img src="assets/img/me/04.webp" alt="" fetchpriority="low" />
         <img src="assets/img/me/05.webp" alt="" fetchpriority="low" />
       </span><span class="w">Harutyunyan</span></h1>
+    <p class="tagline fade d3">Commercial photographer for brands, restaurants and events.<br>
+      <a class="cat" href="/contact">Book a shoot <span aria-hidden="true">&rarr;</span></a></p>
   </main>
 
   <footer class="bottom fade d2">
     <span class="side left">Yerevan, Armenia</span>
     <p class="note">
-      <a class="cat" href="/portrait">Portrait</a> <span aria-hidden="true">&bull;</span>
+      <a class="cat" href="/product">Product &amp; Food</a> <span aria-hidden="true">&bull;</span>
       <a class="cat" href="/fashion">Fashion</a> <span aria-hidden="true">&bull;</span>
-      <a class="cat" href="/product">Product</a> <span aria-hidden="true">&bull;</span>
-      <a class="cat" href="/reportage">Reportage</a>
+      <a class="cat" href="/portrait">Portrait</a> <span aria-hidden="true">&bull;</span>
+      <a class="cat" href="/reportage">Events</a>
     </p>
     <span class="side right">Available worldwide</span>
   </footer>
@@ -196,6 +200,8 @@
   function start(){ if(!timer && !document.hidden && !still.matches) timer = setInterval(tick, INTERVAL); }
   function stop(){ clearInterval(timer); timer = null; }
   document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  const nm = document.querySelector('.name');
+  nm.addEventListener('mouseenter', stop); nm.addEventListener('mouseleave', start);   // կանգնում է մկնիկը վրան պահելիս
   if(still.addEventListener) still.addEventListener('change', () => still.matches ? stop() : start());
   start();
 })();
@@ -214,13 +220,17 @@
     el.style.fontSize = (100 * target / measured) + 'px';
   }
   fit();
-  // ցույց տալ անունը միայն այն բանից հետո, երբ տառատեսակը և չափը պատրաստ են (առավելագույնը 700ms)
+  // ցույց տալ անունը միայն այն բանից հետո, երբ տառատեսակը և չափը պատրաստ են (առավելագույնը 300ms)
   const go = () => el.classList.add('go');
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fit(); go(); });
-  setTimeout(go, 700);
+  setTimeout(go, 300);
   window.addEventListener('resize', fit);
 })();
 </script>
+  <script type="speculationrules">
+  {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}],
+   "prerender":[{"where":{"href_matches":"/*"},"eagerness":"conservative"}]}
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token": "9f4ea969e29049e4aa8a2d39586d01d0"}'></script>
